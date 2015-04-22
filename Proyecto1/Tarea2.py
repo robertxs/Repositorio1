@@ -2,7 +2,7 @@
 '''
 Created on 13/4/2015
 
-@author: Roberto
+@author: Roberto y Samuel
 '''
 import uuid
 import hashlib
