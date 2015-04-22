@@ -1,10 +1,10 @@
-'''
+'''as
 Created on 20/4/2015
 
 @author: samuel , roberto
 '''
 import unittest
-from mdlaccesscontrol import *
+from clsAccessControl import *
 
 class clsAccessControlTester(unittest.TestCase):
     
