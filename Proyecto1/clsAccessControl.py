@@ -6,6 +6,7 @@ Created on 13/4/2015
 '''
 import uuid
 import hashlib
+import re
  
 class clsAccessControl(object):
     def __init__(self):
@@ -16,10 +17,14 @@ class clsAccessControl(object):
         oHash=""
         olength_password=self.length_password(value)
         if olength_password>=8 and olength_password<=16:
-            # uuid es usado para generar numeros random
-            salt = uuid.uuid4().hex
-            # hash
-            oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
+            if (re.search(r'[a-z]', value) or re.search(r'[A-Z]', value)) and (re.search(r'[!-/]', value) 
+                or re.search(r'[:-@]', value) or re.search(r'[[-`]', value) or re.search(r'[{-~]', value)) and re.search(r'\d', value):
+                # uuid es usado para generar numeros random
+                    salt = uuid.uuid4().hex
+                # hash
+                    oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
+            else:
+                print('El Password debe contener números, símbolos y caracteres')
         else:
             print('El Password debe contener entre 8 y 16 caracteres')
         return oHash   
