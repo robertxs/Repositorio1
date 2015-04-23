@@ -25,6 +25,7 @@ class clsAccessControl(object):
                     oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
             else:
                 print('El Password debe contener números, símbolos y caracteres')
+                return False
         else:
             print('El Password debe contener entre 8 y 16 caracteres')
         return oHash   
@@ -40,6 +41,7 @@ class clsAccessControl(object):
                  return oPassworkEncript == hashlib.sha256(salt.encode() + oCheckPassword.encode()).hexdigest()
             else:
                 print('El Password debe contener números, símbolos y caracteres')
+                return False
         else:
             print('El Password no posee la cantidad de caracteres requerida')
             return False
