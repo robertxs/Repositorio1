@@ -33,9 +33,13 @@ class clsAccessControl(object):
         # Verificar la longitud del password
         olength_password=self.length_password(oCheckPassword)
         if olength_password>=8 and olength_password<=16: 
-            # uuid es usado para generar numeros random
-            oPassworkEncript, salt = oPassworkEncript.split(':')
-            return oPassworkEncript == hashlib.sha256(salt.encode() + oCheckPassword.encode()).hexdigest()
+            if (re.search(r'[a-z]', oCheckPassword) or re.search(r'[A-Z]', oCheckPassword)) and (re.search(r'[!-/]', oCheckPassword) 
+                or re.search(r'[:-@]', oCheckPassword) or re.search(r'[[-`]', oCheckPassword) or re.search(r'[{-~]', oCheckPassword)) and re.search(r'\d', oCheckPassword):
+                 # uuid es usado para generar numeros random
+                 oPassworkEncript, salt = oPassworkEncript.split(':')
+                 return oPassworkEncript == hashlib.sha256(salt.encode() + oCheckPassword.encode()).hexdigest()
+            else:
+                print('El Password debe contener números, símbolos y caracteres')
         else:
             print('El Password no posee la cantidad de caracteres requerida')
             return False
