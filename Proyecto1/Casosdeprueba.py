@@ -10,6 +10,10 @@ class clsAccessControlTester(unittest.TestCase):
     
     def setUp(self):
         self.tac = clsAccessControl()
+        
+    #Caso Valido
+    def testnormal(self):
+        self.assertEqual(True, self.tac.check_password(self.tac.encript('1a*1a*2a*'),'1a*1a*2a*') )
                          
     #Casos Validos Frontera
                         
