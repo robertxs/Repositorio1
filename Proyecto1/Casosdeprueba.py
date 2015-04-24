@@ -10,7 +10,11 @@ class clsAccessControlTester(unittest.TestCase):
     
     def setUp(self):
         self.tac = clsAccessControl()
-      
+    #Caso para encript
+    def testencript(self):  
+        self.assertEqual(False, self.tac.encript('Hola123,./')=='')
+        
+    #Casos para check_password
     #Caso Valido
     def testnormal(self):
         self.assertEqual(True, self.tac.check_password(self.tac.encript('1A*1a*2a*'),'1A*1a*2a*') )
