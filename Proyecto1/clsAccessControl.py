@@ -17,7 +17,7 @@ class clsAccessControl(object):
         oHash=""
         olength_password=self.length_password(value)
         if olength_password>=8 and olength_password<=16:
-            if  re.search(r'[A-Z]', value) and (re.search(r'[a-z]', value) or re.search(r'[!-/]', value) 
+            if  re.search(r'[A-Z]', value) and (re.search(r'[!-/]', value) 
                 or re.search(r'[:-@]', value) or re.search(r'[[-`]', value) or re.search(r'[{-~]', value)) and re.search(r'\d', value):
                 #uuid es usado para generar numeros random
                     salt = uuid.uuid4().hex
@@ -33,7 +33,7 @@ class clsAccessControl(object):
         # Verificar la longitud del password
         olength_password=self.length_password(oCheckPassword)
         if olength_password>=8 and olength_password<=16: 
-            if re.search(r'[A-Z]', oCheckPassword) and (re.search(r'[a-z]', value) or re.search(r'[!-/]', oCheckPassword) 
+            if re.search(r'[A-Z]', oCheckPassword) and (re.search(r'[!-/]', oCheckPassword) 
                 or re.search(r'[:-@]', oCheckPassword) or re.search(r'[[-`]', oCheckPassword) or re.search(r'[{-~]', oCheckPassword)) and re.search(r'\d', oCheckPassword):
                 # uuid es usado para generar numeros random
                 oPassworkEncript, salt = oPassworkEncript.split(':')

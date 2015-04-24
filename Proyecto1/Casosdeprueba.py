@@ -10,25 +10,25 @@ class clsAccessControlTester(unittest.TestCase):
     
     def setUp(self):
         self.tac = clsAccessControl()
-        
+      
     #Caso Valido
     def testnormal(self):
-        self.assertEqual(True, self.tac.check_password(self.tac.encript('1a*1a*2a*'),'1a*1a*2a*') )
+        self.assertEqual(True, self.tac.check_password(self.tac.encript('1A*1a*2a*'),'1A*1a*2a*') )
                          
     #Casos Validos Frontera
                         
     def testnormall8(self):
-        self.assertEqual(True, self.tac.check_password(self.tac.encript('prueba-1'),'prueba-1') )
+        self.assertEqual(True, self.tac.check_password(self.tac.encript('Prueba-1'),'Prueba-1') )
     
     def testnormal16(self):
-        self.assertEqual(True, self.tac.check_password(self.tac.encript('@prueba_version2'), '@prueba_version2'))
+        self.assertEqual(True, self.tac.check_password(self.tac.encript('@prUeba_version2'), '@prUeba_version2'))
         
     #Casos Invalidos Frontera
     def testonly7(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('pru3ba?'), 'pru3ba?'))
+        self.assertEqual(False, self.tac.check_password(self.tac.encript('Pru3ba?'), 'Pru3ba?'))
         
     def testonly17(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('@prueba/version17'), '@prueba/version17'))
+        self.assertEqual(False, self.tac.check_password(self.tac.encript('@Prueba/version17'), '@Prueba/version17'))
             
     def testonlyletras(self):
         self.assertEqual(False,self.tac.check_password(self.tac.encript('ProbandoEsto'), 'ProbandoEsto'))
@@ -40,10 +40,10 @@ class clsAccessControlTester(unittest.TestCase):
         self.assertEqual(False, self.tac.check_password(self.tac.encript('-@$%&/()=!/'), '-@$%&/()=!/'))
         
     def testletynum(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('prueba12'), 'prueba12'))
+        self.assertEqual(False, self.tac.check_password(self.tac.encript('Prueba12'), 'Prueba12'))
         
     def testletycara(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('¡prueba!'), '¡prueba!'))
+        self.assertEqual(False, self.tac.check_password(self.tac.encript('¡Prueba!'), '¡Prueba!'))
     
     def testnumycara(self):
         self.assertEqual(False, self.tac.check_password(self.tac.encript('(1234-5678)'), '(1234-5678)'))   
