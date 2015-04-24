@@ -10,8 +10,10 @@ class clsAccessControlTester(unittest.TestCase):
     
     def setUp(self):
         self.tac = clsAccessControl()
+                         
     #Casos Validos Frontera
-    def testnormal8(self):
+                        
+    def testnormall8(self):
         self.assertEqual(True, self.tac.check_password(self.tac.encript('prueba-1'),'prueba-1') )
     
     def testnormal16(self):
@@ -23,9 +25,6 @@ class clsAccessControlTester(unittest.TestCase):
         
     def testonly17(self):
         self.assertEqual(False, self.tac.check_password(self.tac.encript('@prueba/version17'), '@prueba/version17'))
-        
-    def testbadpass(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('una.prueba?'),'un.aprueba?'))
             
     def testonlyletras(self):
         self.assertEqual(False,self.tac.check_password(self.tac.encript('ProbandoEsto'), 'ProbandoEsto'))
@@ -67,11 +66,11 @@ class clsAccessControlTester(unittest.TestCase):
       
     #Casos Malicia
     def testemoji(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('☺mira_un_3moji'), '☺mira_un_emoji'))
+        self.assertEqual(False, self.tac.check_password(self.tac.encript(''), ''))
         
     def testespacio(self):
-        self.assertEqual(False, self.tac.check_password(self.tac.encript('(prue ba2)'), '(prue ba2)'))
-    
+        self.assertEqual(False, self.tac.check_password(self.tac.encript('prue ba2'), 'prue ba2'))
+        
     if __name__ == "__main__":
         unittest.main()
         
