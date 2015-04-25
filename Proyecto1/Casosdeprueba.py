@@ -10,11 +10,16 @@ class clsAccessControlTester(unittest.TestCase):
     
     def setUp(self):
         self.tac = clsAccessControl()
-    #Caso para encript
+    #--------Casos para encript--------
+    #Caso Valido
     def testencript(self):  
         self.assertEqual(False, self.tac.encript('Hola123,./')=='')
+    #Casos Invalido Frontera    
+    def testencript2(self):  
+        self.assertEqual(True, self.tac.encript('ola123,./')=='')
         
-    #Casos para check_password
+        
+    #--------Casos para check_password--------
     #Caso Valido
     def testnormal(self):
         self.assertEqual(True, self.tac.check_password(self.tac.encript('1A*1a*2a*'),'1A*1a*2a*') )
@@ -78,6 +83,14 @@ class clsAccessControlTester(unittest.TestCase):
         
     def testespacio(self):
         self.assertEqual(False, self.tac.check_password(self.tac.encript('prue ba2'), 'prue ba2'))
+        
+        
+    #--------Casos para length_password--------
+    def testlength(self):  
+        self.assertEqual(True, self.tac.length_password('Hola123')==7)
+    def test2length(self):  
+        self.assertEqual(False, self.tac.length_password('Hola')==5)
+    
         
     if __name__ == "__main__":
         unittest.main()
